@@ -32,6 +32,6 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@benface/tailwindcss-reset')],
+  plugins: [],
   prefix: 'tw-'
 };
