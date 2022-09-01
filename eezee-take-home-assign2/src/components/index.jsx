@@ -1,3 +1,3 @@
-export * from './cards';
-export * from './misc';
-export * from './header';
+export * from './cards'
+export * from './misc'
+export * from './header'

@@ -1,4 +1,4 @@
-import BrandCard from './BrandCard';
-import ProductCard from './ProductCard';
+import BrandCard from './BrandCard'
+import ProductCard from './ProductCard'
 
-export { BrandCard, ProductCard };
+export { BrandCard, ProductCard }

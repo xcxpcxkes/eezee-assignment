@@ -1,59 +1,59 @@
-import React, { useContext, useReducer } from 'react';
-import reducer from './reducer';
+import React, { useContext, useReducer } from 'react'
+import reducer from './reducer'
 
-import { GET_QTY, ADD_ITEM, SET_QTY, REMOVE_ITEM } from './action';
+import { GET_QTY, ADD_ITEM, SET_QTY, REMOVE_ITEM } from './action'
 
-const quantity = localStorage.getItem('qty');
+const quantity = localStorage.getItem('qty')
 
 export const initialState = {
-  qty: quantity ?? 0,
-  items: []
-};
+    qty: quantity ?? 0,
+    items: [],
+}
 
-const AppContext = React.createContext();
+const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-  // const addItem = (item, amount) => {
-  //   dispatch({
-  //     type: ADD_ITEM
-  //   });
-  // };
+    // const addItem = (item, amount) => {
+    //   dispatch({
+    //     type: ADD_ITEM
+    //   });
+    // };
 
-  // const removeItem = (item) => {
-  //   dispatch({
-  //     type: REMOVE_ITEM
-  //   });
-  // };
+    // const removeItem = (item) => {
+    //   dispatch({
+    //     type: REMOVE_ITEM
+    //   });
+    // };
 
-  const getQty = async () => {
-    dispatch({ type: GET_QTY });
-  };
+    const getQty = async () => {
+        dispatch({ type: GET_QTY })
+    }
 
-  const setQty = async (qty) => {
-    dispatch({ type: SET_QTY, payload: { qty } });
-    addToLocalStorage(qty);
-  };
+    const setQty = async (qty) => {
+        dispatch({ type: SET_QTY, payload: { qty } })
+        addToLocalStorage(qty)
+    }
 
-  const addToLocalStorage = (qty) => {
-    localStorage.setItem('qty', qty);
-  };
+    const addToLocalStorage = (qty) => {
+        localStorage.setItem('qty', qty)
+    }
 
-  return (
-    <AppContext.Provider
-      value={{
-        ...state,
-        getQty,
-        setQty
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
-};
+    return (
+        <AppContext.Provider
+            value={{
+                ...state,
+                getQty,
+                setQty,
+            }}
+        >
+            {children}
+        </AppContext.Provider>
+    )
+}
 
 export const useAppContext = () => {
-  return useContext(AppContext);
-};
+    return useContext(AppContext)
+}
 
-export { AppProvider };
+export { AppProvider }
